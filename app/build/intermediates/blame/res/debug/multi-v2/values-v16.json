@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/cristianoaf81/AndroidStudioProjects/Calculadora/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "/home/cristianoaf81/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/3862f10b6d8e2187fad4749a3b63eaa8/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/home/cristianoaf81/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/cd9368b0f6833373e16d7cf549381295/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}
