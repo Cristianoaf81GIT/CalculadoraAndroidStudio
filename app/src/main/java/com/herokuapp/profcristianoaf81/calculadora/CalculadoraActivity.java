@@ -9,11 +9,7 @@ import android.widget.TextView;
 
 public class CalculadoraActivity extends Activity implements OnClickListener{
 
-    /*
-        Baseado no código disponível em:
-        http://codigosandroid.blogspot.com/2013/03/v-behaviorurldefaultvmlo.html
 
-    */
 
     private Button btn1;
     private Button btn2;
@@ -36,9 +32,11 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
     private TextView visorResultado;
 
 
-    private double n1,n2=0d;
+    private double n1,n2=0d,result=0d;
     private String operacao;
     private String opTOTAL;
+    private int igualContador=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +110,8 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
    }
 
    private void ponto(String ponto){
+        String checagem = visorCalculadora.getText().toString();
+
         if(!visorCalculadora.getText().toString().trim().equals("0.0")) {
             visorCalculadora.setText(
                     visorCalculadora.getText().toString() + ponto
@@ -123,45 +123,54 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
         if(visorCalculadora.getText().toString().equals("0.0")){
             visorCalculadora.setText("0.");
         }
+        if(checagem.equals("") || checagem == null){
+            visorCalculadora.setText("0.");
+        }
    }
 
    private void limparVisor(){
         this.visorCalculadora.setText("");
         this.visorResultado.setText("");
+        this.opTOTAL = "";
+
+
    }
 
    public void operacoes(String operacao){
         this.operacao = operacao;
 
-        if(n2==0d) {
-            if (operacao == "+") {
-                n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
-                limparVisor();
+        if(!this.operacao.equals("")) {
+            if (n2 == 0d) {
+                if (operacao == "+") {
+                    n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
+                    limparVisor();
+                }
+
+                if (operacao == "-") {
+                    n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
+                    limparVisor();
+                }
+
+                if (operacao == "X") {
+                    n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
+                    limparVisor();
+                }
+
+                if (operacao == "/") {
+                    n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
+                    limparVisor();
+                }
             }
 
-            if (operacao == "-") {
-                n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
-                limparVisor();
-            }
-
-            if (operacao == "X") {
-                n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
-                limparVisor();
-            }
-
-            if (operacao == "/") {
-                n1 = Double.parseDouble(visorCalculadora.getText().toString().trim());
-                limparVisor();
-            }
         }
-
-
 
    }
 
    private void igual(){
-        if(!visorCalculadora.getText().toString().trim().equals(""))
+        if(!visorCalculadora.getText().toString().trim().equals("")&& opTOTAL.equals(""))
         {
+
+
            if(n2==0d) {
                opTOTAL = String.valueOf(n1) + operacao
                        + Double.parseDouble(visorCalculadora.getText().toString());
@@ -190,10 +199,19 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
         }else{
             n2 = 0d;
         }
+            if(!opTOTAL.contains("null")) {
+                if(igualContador==1 && n2 != 0d) {
+                    visorCalculadora.setText(String.valueOf(opTOTAL));
+                    result = n2;
+                    visorResultado.setText("Resultado: " + String.valueOf(result));
+                    opTOTAL = "";
+                    result = 0d;
+                    n1 = 0d;
 
-        visorCalculadora.setText(String.valueOf(opTOTAL));
-        visorResultado.setText("Resultado: "+String.valueOf(n2));
+                }
 
+
+            }
 
    }
 
@@ -209,6 +227,15 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     n2=0;
                 }
 
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
+
                 TecladoNumerico(0);
             break;
 
@@ -217,6 +244,15 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                 if(n2!=0d){
                     limparVisor();
                     n2=0;
+                }
+
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
                 }
 
                 TecladoNumerico(1);
@@ -228,7 +264,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(2);
             break;
 
@@ -238,7 +281,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(3);
             break;
 
@@ -248,7 +298,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(4);
             break;
 
@@ -258,7 +315,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(5);
             break;
 
@@ -268,7 +332,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(6);
             break;
 
@@ -278,7 +349,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(7);
             break;
 
@@ -288,7 +366,14 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(8);
             break;
 
@@ -298,11 +383,27 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    n2 = 0d;
+                }
                 TecladoNumerico(9);
             break;
 
             case R.id.btn_limpar:
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    //n1 = 0d;
+                    n2 = 0d;
+                }
                 limparVisor();
             break;
 
@@ -331,13 +432,35 @@ public class CalculadoraActivity extends Activity implements OnClickListener{
                     limparVisor();
                     n2=0;
                 }
-                String teste = visorCalculadora.getText().toString();
-                System.out.println(teste);
+                if(this.igualContador>=1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    //n1 = 0d;
+                }
+
                 ponto(".");
             break;
 
             case R.id.btn_igual:
+                this.igualContador +=1 ;
+                if(this.igualContador>1){
+                    this.igualContador = 0;
+                    this.visorCalculadora.setText("0.0");
+                    this.visorResultado.setText("Resultado: ");
+                    opTOTAL = "";
+                    result = 0d;
+                    //n1 = 0d;
+                    n2 = 0d;
+                    if(n2 == 0d){
+                        this.visorCalculadora.setText("0.0");
+                        this.visorResultado.setText("Resultado: ");
+                    }
+                }
                 igual();
+
             break;
         }
     }

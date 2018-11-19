@@ -1,0 +1,19 @@
+#  Baseado no código disponível em:
+#  http://codigosandroid.blogspot.com/2013/03/v-behaviorurldefaultvmlo.html
+
+
+#mudando a orientação da activity
+#https://stackoverflow.com/questions/15718869
+#/how-to-lock-android-apps-orientation-to-portrait-mode
+
+#grid layout:
+#https://developer.android.com/reference/android/widget/GridLayout
+
+#scroll layout:
+#https://stackoverflow.com/questions/6674341/how-to-use-scrollview-in-android
+
+#meu git:
+#https://github.com/profcristianoaf81/CalculadoraAndroidStudio.git
+
+#unidades de medida no android:
+#https://pt.stackoverflow.com/questions/295/qual-a-diferença-entre-px-dp-dip-and-sp

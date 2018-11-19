@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme" >
         <activity android:name=".CalculadoraActivity"
             android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"><!--https://stackoverflow.com/questions/15718869/how-to-lock-android-apps-orientation-to-portrait-mode!-->
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>

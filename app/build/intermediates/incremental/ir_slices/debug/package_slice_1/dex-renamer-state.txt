@@ -1,4 +1,4 @@
-#Sun Nov 11 15:53:26 BRST 2018
+#Mon Nov 19 00:17:51 BRST 2018
 base.0=/home/cristianoaf81/AndroidStudioProjects/Calculadora/app/build/intermediates/transforms/dexMerger/debug/1
 path.0=classes.dex
 renamed.0=classes.dex

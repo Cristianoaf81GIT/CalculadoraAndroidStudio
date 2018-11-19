@@ -21,7 +21,7 @@
         <activity
             android:name="com.herokuapp.profcristianoaf81.calculadora.CalculadoraActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" > <!-- https://stackoverflow.com/questions/15718869/how-to-lock-android-apps-orientation-to-portrait-mode! -->
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
